@@ -1,0 +1,54 @@
+{
+    "version": 8,
+    "name": "Mijn eigen Stijl",
+"sources": {
+    "pdok":{
+        "type": "vector",
+        "tiles":  ["http://geodata.nationaalgeoregister.nl/beta/topotiles/{z}/{x}/{y}.pbf"]
+    },
+	"aardbeving_points":{
+		"type": "geojson",
+		"data": "geojson/geojson/aardbevingen_NL.geojson"
+	}
+},
+"layers":[ 
+        { 
+            "id":  "background",
+            "type": "background",
+            "paint": {
+                "background-color":"#FFFFFF"
+                }
+        },
+        {
+            "id": "admin",
+            "type": "fill",
+            "source": "pdok",
+            "source-layer": "admin",
+            "maxzoom": 22,
+            "minzoom": 0,
+            "filter": ["==", "lod1", "province"],
+            "paint": {
+                "fill-color" :"#54D8CC",
+                "fill-outline-color": "#ffffff"
+            }
+        },
+		{
+    "id": "aardbeving",
+    "type": "circle",
+    "source": "aardbeving_points",
+    "maxzoom": 22,
+    "minzoom": 0,
+    "paint":{
+        "circle-radius": 5,
+        "circle-color":{
+            "type": "categorical",
+            "property": "TYPE",
+            "stops":[
+                ["ind", "#f3ec9c"],
+                ["tec", "#F5CB5B"]
+            ]
+        }
+    }
+}
+    ]
+}
