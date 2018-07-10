@@ -8,7 +8,7 @@
     },
 	"aardbeving_points":{
 		"type": "geojson",
-		"data": "geojson/geojson/aardbevingen_NL.geojson"
+		"data": "aardbevingen_NL.geojson"
 	}
 },
 "layers":[ 
